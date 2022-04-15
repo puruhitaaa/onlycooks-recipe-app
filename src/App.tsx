@@ -1,26 +1,54 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { Footer, Header } from './components';
+import {
+  AboutScreen,
+  HomeScreen,
+  LoginScreen,
+  ProfileScreen,
+  RecipeScreen,
+  RegisterScreen,
+  NotFoundScreen,
+  FollowerListScreen,
+  FollowingListScreen,
+  LikeListScreen,
+} from './pages';
+import { ApolloProvider } from './utils/ApolloProvider';
+import { Compose } from './utils/CombineProviders';
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Compose components={[BrowserRouter, ApolloProvider]}>
+      <Header />
+
+      <main className="min-h-screen bg-base-100">
+        <Routes>
+          <Route index element={<HomeScreen />} />
+          <Route path="about" element={<AboutScreen />} />
+          <Route path="login" element={<LoginScreen />} />
+          <Route path="register" element={<RegisterScreen />} />
+          <Route path="profile">
+            <Route path=":username" element={<ProfileScreen />} />
+          </Route>
+          <Route
+            path="profile/:username/followers"
+            element={<FollowerListScreen />}
+          />
+          <Route
+            path="profile/:username/followings"
+            element={<FollowingListScreen />}
+          />
+          <Route path="recipe">
+            <Route path=":id" element={<RecipeScreen />} />
+          </Route>
+          <Route path="recipe/:id/likes" element={<LikeListScreen />} />
+          <Route path="notfound" element={<NotFoundScreen />} />
+          <Route path="*" element={<NotFoundScreen />} />
+        </Routes>
+      </main>
+
+      <Footer />
+    </Compose>
   );
-}
+};
 
 export default App;
