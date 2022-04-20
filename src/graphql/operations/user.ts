@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const REGISTER_USER = gql`
   mutation register(
@@ -26,7 +26,7 @@ export const REGISTER_USER = gql`
       isPrivate
     }
   }
-`;
+`
 
 export const LOGIN_USER = gql`
   mutation login($username: String!, $password: String!) {
@@ -38,7 +38,7 @@ export const LOGIN_USER = gql`
       isPrivate
     }
   }
-`;
+`
 
 export const FETCH_USER_BY_USERNAME = gql`
   query fetchUserByUsername($username: String!) {
@@ -84,7 +84,7 @@ export const FETCH_USER_BY_USERNAME = gql`
       createdAt
     }
   }
-`;
+`
 
 export const FETCH_FOLLOWERS_BY_USERNAME = gql`
   query fetchUserByUsername($username: String!) {
@@ -102,7 +102,7 @@ export const FETCH_FOLLOWERS_BY_USERNAME = gql`
       }
     }
   }
-`;
+`
 
 export const FETCH_FOLLOWINGS_BY_USERNAME = gql`
   query fetchUserByUsername($username: String!) {
@@ -120,7 +120,7 @@ export const FETCH_FOLLOWINGS_BY_USERNAME = gql`
       }
     }
   }
-`;
+`
 
 export const FOLLOW_USER = gql`
   mutation followUser($userId: ID) {
@@ -133,4 +133,4 @@ export const FOLLOW_USER = gql`
       createdAt
     }
   }
-`;
+`

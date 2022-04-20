@@ -1,14 +1,14 @@
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom'
 
 const Breadcrumbs = () => {
-  let { pathname } = useLocation();
+  let { pathname } = useLocation()
 
   if (pathname.split('/').length === 3) {
     return (
-      <div className="text-sm breadcrumbs capitalize">
+      <div className='text-sm breadcrumbs capitalize scrollbar-hide'>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to='/'>Home</Link>
           </li>
           <li>
             <p>{pathname.split('/')[1]}</p>
@@ -20,15 +20,15 @@ const Breadcrumbs = () => {
           </li>
         </ul>
       </div>
-    );
+    )
   }
 
   if (pathname.split('/').length === 4) {
     return (
-      <div className="text-sm breadcrumbs capitalize">
+      <div className='text-sm breadcrumbs capitalize scrollbar-hide'>
         <ul>
           <li>
-            <Link to="/">Home</Link>
+            <Link to='/'>Home</Link>
           </li>
           <li>
             <p>{pathname.split('/')[1]}</p>
@@ -45,21 +45,21 @@ const Breadcrumbs = () => {
           </li>
         </ul>
       </div>
-    );
+    )
   }
 
   return (
-    <div className="text-sm breadcrumbs capitalize">
+    <div className='text-sm breadcrumbs capitalize scrollbar-hide'>
       <ul>
         <li>
-          <Link to="/">Home</Link>
+          <Link to='/'>Home</Link>
         </li>
         <li>
-          <Link to="">{pathname.split('/')}</Link>
+          <Link to=''>{pathname.split('/')}</Link>
         </li>
       </ul>
     </div>
-  );
-};
+  )
+}
 
-export default Breadcrumbs;
+export default Breadcrumbs

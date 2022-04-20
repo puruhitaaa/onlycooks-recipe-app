@@ -1,4 +1,4 @@
-import gql from 'graphql-tag';
+import gql from 'graphql-tag'
 
 export const FETCH_RECIPES = gql`
   query fetchRecipes($limit: Int, $page: Int) {
@@ -29,7 +29,7 @@ export const FETCH_RECIPES = gql`
       recipe_tags
     }
   }
-`;
+`
 
 export const FETCH_RECIPE_BY_ID = gql`
   query fetchRecipeById($recipeId: ID) {
@@ -59,13 +59,18 @@ export const FETCH_RECIPE_BY_ID = gql`
         avatar_url
         username
       }
+      stars {
+        id
+      }
+      about
+      steps
       likeCount
       starCount
       meal_thumbnail
       recipe_tags
     }
   }
-`;
+`
 
 export const LIKE_RECIPE = gql`
   mutation likeRecipe($recipeId: ID) {
@@ -92,7 +97,7 @@ export const LIKE_RECIPE = gql`
       recipe_tags
     }
   }
-`;
+`
 
 export const STAR_RECIPE = gql`
   mutation starRecipe($recipeId: ID) {
@@ -119,7 +124,7 @@ export const STAR_RECIPE = gql`
       recipe_tags
     }
   }
-`;
+`
 
 export const FETCH_RECIPE_LIKE_LIST = gql`
   query fetchRecipeById($recipeId: ID) {
@@ -137,4 +142,4 @@ export const FETCH_RECIPE_LIKE_LIST = gql`
       likeCount
     }
   }
-`;
+`

@@ -1,29 +1,35 @@
-import { useQuery } from '@apollo/client';
-import { Alert, Card, Hero } from '../../components';
-import { FETCH_RECIPES } from '../../graphql/operations/recipes';
-import { useRecipe } from '../../hooks/useRecipe';
-import { IRecipe } from '../../types/recipe';
+import { useQuery } from '@apollo/client'
+import { Alert, Card, Hero } from '../../components'
+import { FETCH_RECIPES } from '../../graphql/operations/recipes'
+import { useRecipe } from '../../hooks/useRecipe'
+import { IRecipe } from '../../types/recipe'
 
 const Home = () => {
-  const { loading, data } = useQuery(FETCH_RECIPES);
+  const { loading, data } = useQuery(FETCH_RECIPES)
   const { isError, error } = useRecipe((state) => ({
     isError: state.isError,
     error: state.error,
-  }));
+  }))
 
   return !loading ? (
     <>
-      <Hero />
+      <Hero
+        recipe={
+          data.fetchRecipes[
+            Math.floor(Math.random() * data.fetchRecipes.length)
+          ]
+        }
+      />
 
       {isError && <Alert msg={error} />}
 
-      <section className="max-w-7xl mx-auto md:px-14 pt-5">
-        <h1 className="text-2xl text-center md:text-left font-semibold">
+      <section className='max-w-7xl mx-auto md:px-14 pt-5'>
+        <h1 className='text-2xl text-center md:text-left font-semibold'>
           Latest recipes
         </h1>
       </section>
 
-      <div className="grid gap-x-4 gap-y-16 mx-auto justify-items-center max-w-7xl lg:grid-cols-4 md:grid-cols-2 my-2.5 p-5">
+      <div className='grid gap-x-4 gap-y-16 mx-auto justify-items-center max-w-7xl lg:grid-cols-4 md:grid-cols-2 my-2.5 p-5'>
         {data.fetchRecipes.map((recipe: IRecipe) => (
           <Card
             id={recipe.id}
@@ -41,7 +47,7 @@ const Home = () => {
         ))}
       </div>
     </>
-  ) : null;
-};
+  ) : null
+}
 
-export default Home;
+export default Home
