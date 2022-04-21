@@ -51,14 +51,14 @@ const Login = () => {
         <Breadcrumbs />
       </section>
 
-      <section className='flex justify-center my-14 relative z-10 overflow-hidden'>
+      <section className='flex justify-center mt-14 relative z-10 overflow-hidden'>
         <img
           className='absolute hidden sm:block object-cover'
           src='https://api.lorem.space/image/pizza?w=1000&h=1000'
           alt='pizza'
         />
         <form
-          className='flex flex-col items-center sm:h-screen w-full max-w-xs px-2.5 py-5 relative sm:bg-base-100'
+          className='flex flex-col items-center sm:h-screen w-full max-w-xs px-2.5 py-5 relative sm:bg-gradient-to-b sm:from-base-100 sm:to-base-200'
           onSubmit={onSubmit}
         >
           <div className='form-control mb-5 w-full'>

@@ -1,4 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 import { Footer, Header } from './components'
 import {
   AboutScreen,
@@ -19,8 +20,9 @@ const App = () => {
   return (
     <Compose components={[BrowserRouter, ApolloProvider]}>
       <Header />
+      <ToastContainer />
 
-      <main className='min-h-screen bg-base-100'>
+      <main className='min-h-screen bg-gradient-to-b from-base-100 to-base-200'>
         <Routes>
           <Route index element={<HomeScreen />} />
           <Route path='about' element={<AboutScreen />} />

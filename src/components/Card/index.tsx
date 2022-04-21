@@ -70,18 +70,22 @@ const Card = ({
   })
 
   return (
-    <div className='card w-56 h-80 bg-base-100 shadow-xl group cursor-pointer'>
+    <div className='card w-56 h-80 bg-base-100 shadow-xl group'>
       <figure className='relative max-h-32'>
         <Link to={`/profile/${author_username}`}>
           <img
-            className='absolute hover:scale-110 top-0 left-0 h-16 w-16 ring-4 duration-200 ring-base-100 object-cover rounded-r-full'
+            className='absolute hover:scale-110 top-0 left-0 h-16 w-16 ring-4 duration-200 ring-base-100 object-cover rounded-r-full z-40'
             src={author_img}
             alt={author_name}
           />
         </Link>
 
         <Link to={`/recipe/${id}`}>
-          <img className='h-52 object-cover' src={meal_thumbnail} alt={name} />
+          <img
+            className='h-52 object-cover transition hover:scale-110'
+            src={meal_thumbnail}
+            alt={name}
+          />
         </Link>
       </figure>
 

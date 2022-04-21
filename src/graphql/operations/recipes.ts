@@ -1,6 +1,6 @@
 import gql from 'graphql-tag'
 
-export const FETCH_RECIPES = gql`
+export const FETCH_RECIPES_HOME = gql`
   query fetchRecipes($limit: Int, $page: Int) {
     fetchRecipes(limit: $limit, page: $page) {
       id
@@ -23,10 +23,47 @@ export const FETCH_RECIPES = gql`
         avatar_url
         username
       }
+      cook_video
       likeCount
       starCount
       meal_thumbnail
       recipe_tags
+    }
+  }
+`
+export const FETCH_RECIPES_EXPLORE = gql`
+  query fetchRecipes($limit: Int, $page: Int) {
+    fetchRecipes(limit: $limit, page: $page) {
+      id
+      author {
+        id
+        avatar_url
+        username
+        fullName
+        followers {
+          id
+        }
+      }
+      name
+      est_price
+      cook_duration
+      likes {
+        id
+        avatar_url
+        username
+      }
+      stars {
+        id
+        avatar_url
+        username
+      }
+      cook_video
+      about
+      likeCount
+      starCount
+      meal_thumbnail
+      recipe_tags
+      createdAt
     }
   }
 `

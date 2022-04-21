@@ -8,8 +8,8 @@ import {
   HiRefresh,
   HiStar,
 } from 'react-icons/hi'
+import ReactPlayer from 'react-player'
 import { Link, useNavigate, useParams } from 'react-router-dom'
-import YouTube from 'react-youtube'
 import { Breadcrumbs, Alert } from '../../components'
 import {
   FETCH_RECIPE_BY_ID,
@@ -122,14 +122,15 @@ const Recipe = () => {
       {isError && <Alert msg={error} />}
       {isUserError && <Alert msg={errorMsg} />}
 
-      <section className='flex flex-col items-center p-5 space-y-5 mx-auto my-10 max-w-7xl'>
+      <section className='flex flex-col items-center p-5 space-y-5 mx-auto mt-10 max-w-7xl'>
         <h1 className='text-2xl text-center md:text-left font-semibold'>
           {queryData.fetchRecipeById.name}
         </h1>
         <div className='relative px-5 w-full'>
-          <YouTube
-            className='w-full'
-            videoId={queryData.fetchRecipeById.cook_video.split('v=')[1]}
+          <ReactPlayer
+            width='100%'
+            controls
+            url={queryData.fetchRecipeById.cook_video}
           />
 
           {!_.isEmpty(user) && (
@@ -241,7 +242,7 @@ const Recipe = () => {
         <div className='flex justify-start sm:justify-center w-full py-5 space-x-5 overflow-x-scroll scrollbar-hide sm:overflow-hidden'>
           {queryData.fetchRecipeById.recipe_tags.length > 0 &&
             queryData.fetchRecipeById.recipe_tags.map((tag: string) => (
-              <div key={tag} className='badge'>
+              <div key={tag} className='badge badge-ghost'>
                 {tag}
               </div>
             ))}
